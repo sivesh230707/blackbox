@@ -4,6 +4,8 @@ import React, { useState, useEffect, useTransition } from 'react';
 import Link from 'next/link';
 
 export default function LandingPage() {
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
+
   // 1. Live Telemetry from Backend
   const [telemetry, setTelemetry] = useState<{
     nodeId?: string;
@@ -18,7 +20,7 @@ export default function LandingPage() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/telemetry')
+    fetch(`${API_BASE}/api/telemetry`)
       .then(res => res.json())
       .then(data => {
         if (data && data.success) {
@@ -104,7 +106,7 @@ export default function LandingPage() {
 
   const executeSearch = (q: string) => {
     setIsSearching(true);
-    fetch(`http://localhost:5000/api/search?q=${encodeURIComponent(q)}`)
+    fetch(`${API_BASE}/api/search?q=${encodeURIComponent(q)}`)
       .then(res => res.json())
       .then(data => {
         if (data && data.success && data.data) {
@@ -141,7 +143,7 @@ export default function LandingPage() {
     setQaLoading(true);
     const start = Date.now();
 
-    fetch('http://localhost:5000/api/chat', {
+    fetch(`${API_BASE}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query: q, lectureScope: 'EE-201: Lecture 04' })
@@ -176,7 +178,7 @@ export default function LandingPage() {
     if (!waitlistEmail || !waitlistEmail.includes('@')) return;
 
     setWaitlistLoading(true);
-    fetch('http://localhost:5000/api/waitlist', {
+    fetch(`${API_BASE}/api/waitlist`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: waitlistEmail })
