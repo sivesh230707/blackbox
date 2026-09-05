@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { 
   FileText, 
   Calculator, 
@@ -75,7 +76,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       >
         {/* Brand Header */}
         <div className="h-16 px-5 flex items-center justify-between border-b border-slate-100 bg-[#f8faff]">
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-85 transition-opacity" title="Return to Landing Page">
             <div className="w-8 h-8 rounded-lg bg-[#0b1c30] flex items-center justify-center text-white shadow-sm ring-1 ring-black/5">
               <div className="flex items-center gap-0.5">
                 <span className="w-1 h-3 bg-indigo-400 rounded-full animate-pulse"></span>
@@ -91,7 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 STUDENT DESK
               </span>
             </div>
-          </div>
+          </Link>
           <span className="text-[10px] font-mono uppercase font-semibold px-2 py-0.5 bg-indigo-50 text-indigo-700 rounded-full border border-indigo-100">
             WORKSPACE
           </span>

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Blackbox — Student Study Dashboard | Local Processing",
-  description: "Academic lecture capture transformed into structured notes, formula sheets, auto-quizzes, and grounded AI assistance.",
+  title: "BLACKBOX — Autonomous Lecture Capture to AI Study Companion",
+  description: "BLACKBOX autonomously captures classroom lectures and transforms them into structured, searchable study material.",
 };
 
 export default function RootLayout({
@@ -25,9 +25,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-full flex flex-col font-sans bg-background text-on-surface selection:bg-blue-100 selection:text-blue-900">
+        {children}
+      </body>
     </html>
   );
 }
