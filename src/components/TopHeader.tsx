@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { 
   Menu, 
   Search, 
@@ -12,7 +13,9 @@ import {
   Bot,
   SlidersHorizontal,
   Bell,
-  Share2
+  Share2,
+  LogOut,
+  UserCheck
 } from 'lucide-react';
 import { LECTURE_METADATA } from '@/data/lectureData';
 
@@ -27,6 +30,27 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   onToggleChat,
   isChatOpen
 }) => {
+  const [currentUser, setCurrentUser] = useState<{ name: string; email: string; role: string }>({
+    name: 'Alex Rivera',
+    email: 'student@blackbox.edu',
+    role: 'Student'
+  });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('blackbox_user');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (parsed && parsed.name) {
+            setCurrentUser(parsed);
+          }
+        } catch {
+          // ignore
+        }
+      }
+    }
+  }, []);
   return (
     <header className="sticky top-0 z-30 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 lg:px-8 py-3.5 transition-all">
       <div className="flex items-center justify-between gap-4">
@@ -106,9 +130,34 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           </button>
 
-          {/* User Icon */}
-          <div className="w-8 h-8 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-700 font-bold text-xs">
-            AM
+          {/* Student Profile & Sign Out */}
+          <div className="flex items-center gap-2 pl-1 border-l border-slate-200">
+            <div 
+              className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shadow-xs"
+              title={`${currentUser.name} (${currentUser.email})`}
+            >
+              {currentUser.name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || 'ST'}
+            </div>
+            <div className="hidden lg:flex flex-col">
+              <span className="text-xs font-semibold text-slate-800 leading-tight truncate max-w-[110px]">
+                {currentUser.name}
+              </span>
+              <span className="text-[10px] text-slate-500 font-mono">
+                {currentUser.role}
+              </span>
+            </div>
+            <Link
+              href="/login"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  localStorage.removeItem('blackbox_token');
+                }
+              }}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
+              title="Sign Out to Login Page"
+            >
+              <LogOut className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </div>

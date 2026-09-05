@@ -227,14 +227,14 @@ export default function LandingPage() {
           <div className="flex items-center gap-2.5 py-1">
             <Link 
               className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-primary text-white font-sans text-xs sm:text-sm font-semibold hover:bg-primary-hover shadow-sm hover:shadow-[0_4px_16px_rgba(37,99,235,0.28)] transition-all" 
-              href="/dashboard"
+              href="/login"
             >
               <span>Launch Workspace</span>
               <span className="material-symbols-outlined ml-1.5 text-[16px]">arrow_forward</span>
             </Link>
             <Link 
               className="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-surface-subtle text-slate-900 border border-border-strong hover:bg-white hover:border-primary hover:text-primary font-sans text-xs sm:text-sm font-semibold shadow-xs transition-all" 
-              href="/dashboard"
+              href="/login"
             >
               <span>Student Login</span>
               <span className="material-symbols-outlined ml-1.5 text-[16px]">login</span>
@@ -269,7 +269,7 @@ export default function LandingPage() {
                 <div className="flex flex-wrap items-center gap-3.5 mb-10 w-full sm:w-auto">
                   <Link 
                     className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-primary text-white font-sans text-sm font-semibold hover:bg-primary-hover shadow-sm hover:shadow-[0_4px_16px_rgba(37,99,235,0.25)] transition-all" 
-                    href="/dashboard"
+                    href="/login"
                   >
                     <span>Explore BLACKBOX</span>
                     <span className="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
@@ -644,7 +644,7 @@ export default function LandingPage() {
                   <span className="w-3 h-3 rounded-full bg-amber-500/80"></span>
                   <span className="w-3 h-3 rounded-full bg-emerald-500/80"></span>
                   <Link 
-                    href="/dashboard"
+                    href="/login"
                     className="ml-3 font-mono text-xs text-slate-400 hover:text-white transition-colors"
                   >
                     BLACKBOX Academic Terminal — app.blackbox.internal (Click to Open)
@@ -679,7 +679,7 @@ export default function LandingPage() {
                       <span className="block font-mono text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">Workspace</span>
                       <Link 
                         className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-primary text-white font-sans text-xs font-semibold shadow-xs" 
-                        href="/dashboard"
+                        href="/login"
                       >
                         <span className="material-symbols-outlined text-[18px]">dashboard</span>
                         <span>Full Workspace</span>
@@ -738,7 +738,7 @@ export default function LandingPage() {
                           <span className="font-mono text-xs text-slate-500">54 Mins • Captured Today, 10:45 AM</span>
                         </div>
                         <Link 
-                          href="/dashboard"
+                          href="/login"
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-slate-100 hover:bg-indigo-50 hover:text-primary text-slate-800 font-sans text-xs font-semibold transition-colors"
                         >
                           <span className="material-symbols-outlined text-[16px]">open_in_new</span>
@@ -1311,7 +1311,7 @@ export default function LandingPage() {
               )}
             </div>
             <div className="flex justify-center mb-10">
-              <Link className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-primary transition-colors" href="/dashboard">
+              <Link className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-primary transition-colors" href="/login">
                 <span>Or explore interactive student workspace</span>
                 <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
               </Link>
